@@ -28,6 +28,7 @@ import type { z } from "zod";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRegister } from "../api/use-register";
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
 
 export function SignUpCard() {
   const form = useForm<z.infer<typeof signUpSchema>>({
@@ -134,11 +135,21 @@ export function SignUpCard() {
         <DottedSeparator />
       </div>
       <CardContent className="flex flex-col gap-y-4">
-        <Button variant="secondary" size="lg" className="w-full">
+        <Button
+          variant="secondary"
+          size="lg"
+          className="w-full"
+          onClick={() => signUpWithGoogle()}
+        >
           <FcGoogle className="size-5 me-2" />
           <span>Sign up with Google</span>
         </Button>
-        <Button variant="secondary" size="lg" className="w-full">
+        <Button
+          variant="secondary"
+          size="lg"
+          className="w-full"
+          onClick={() => signUpWithGithub()}
+        >
           <FaGithub className="size-5 me-2" />
           <span>Sign up with Github</span>
         </Button>
