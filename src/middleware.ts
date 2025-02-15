@@ -3,18 +3,20 @@ import type { NextRequest } from "next/server";
 import { getCurrentUser } from "./features/auth/queries";
 
 export async function middleware(request: NextRequest) {
-  const user = await getCurrentUser();
   const isAuthPage =
     request.nextUrl.pathname === "/sign-in" ||
     request.nextUrl.pathname === "/sign-up";
   const isOAuthPage = request.nextUrl.pathname === "/oauth";
 
-  if (!user && !isAuthPage && !isOAuthPage) {
-    return NextResponse.redirect(new URL("/sign-in", request.url));
-  }
+  if (!isOAuthPage) {
+    const user = await getCurrentUser();
+    if (!user && !isAuthPage) {
+      return NextResponse.redirect(new URL("/sign-in", request.url));
+    }
 
-  if (user && (isAuthPage || isOAuthPage)) {
-    return NextResponse.redirect(new URL("/", request.url));
+    if (user && isAuthPage) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
   }
 
   return NextResponse.next();
