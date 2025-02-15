@@ -14,7 +14,7 @@ import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 export const sidebarItems = [
   {
     label: "Home",
-    href: "/",
+    href: "",
     icon: GoHome,
     activeIcon: GoHomeFill,
   },
@@ -58,7 +58,7 @@ export const Navigation = () => {
                   className={cn(
                     "flex items-center font-medium rounded-md gap-2.5 p-4 hover:text-primary transition text-neutral-500",
                     isActive(fullHref) &&
-                      "bg-white shadow-sm hover:opacity-100 text-primary"
+                      "bg-white w-full shadow-sm hover:opacity-100 text-primary"
                   )}
                 >
                   <Icon size={24} className="size-6 text-neutral-500" />
