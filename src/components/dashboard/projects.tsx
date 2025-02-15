@@ -60,6 +60,8 @@ export function Projects() {
                       <ProjectAvatar
                         imageUrl={project.imageUrl}
                         name={project.name}
+                        className="size-6 p-2"
+                        fallbackClassName="text-base"
                       />
                       <span className="text-xl truncate me-1">
                         {project.name}

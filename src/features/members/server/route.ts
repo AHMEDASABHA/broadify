@@ -8,6 +8,7 @@ import { Query } from "node-appwrite";
 import { config } from "@/config";
 import { getMember } from "../utils/get-member";
 import { MemberRole } from "@/features/members/types/role";
+import type { Member } from "../types/member";
 
 const app = new Hono()
   .get(
@@ -29,7 +30,7 @@ const app = new Hono()
         return c.json({ error: "Unauthorized" }, 401);
       }
 
-      const members = await databases.listDocuments(
+      const members = await databases.listDocuments<Member>(
         config.appwrite.databaseId,
         config.appwrite.membersId,
         [Query.equal("workspaceId", workspaceId)]

@@ -1,4 +1,5 @@
 import React from "react";
+import { SingleWorkspaceClient } from "./client";
 
 export default async function WorkspacePage({
   params,
@@ -6,5 +7,5 @@ export default async function WorkspacePage({
   params: Promise<{ workspaceId: string }>;
 }) {
   const workspaceId = (await params).workspaceId;
-  return <div>WorkspacePage</div>;
+  return <SingleWorkspaceClient workspaceId={workspaceId} />;
 }

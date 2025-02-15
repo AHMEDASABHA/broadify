@@ -6,15 +6,24 @@ import { PencilIcon } from "lucide-react";
 import Link from "next/link";
 import { useGetSingleProject } from "@/features/projects/api/use-get-single-project";
 import { PageLoader } from "@/components/page-loader";
-import {PageError} from "@/components/page-error";
+import { PageError } from "@/components/page-error";
+import { useGetProjectAnalytics } from "@/features/projects/api/use-get-project-analytics";
+import { Analytics } from "@/components/analytics";
+
 export function ProjectPageClient({ projectId }: { projectId: string }) {
-  const { data: intialValues, isLoading } = useGetSingleProject({ projectId });
+  const { data: project, isLoading: isProjectLoading } = useGetSingleProject({
+    projectId,
+  });
+  const { data: analytics, isLoading: isAnalyticsLoading } =
+    useGetProjectAnalytics({ projectId });
+
+  const isLoading = isProjectLoading || isAnalyticsLoading;
 
   if (isLoading) {
     return <PageLoader />;
   }
 
-  if (!intialValues) {
+  if (!project) {
     return <PageError errorMessage="Project not found" />;
   }
 
@@ -23,16 +32,16 @@ export function ProjectPageClient({ projectId }: { projectId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ProjectAvatar
-            name={intialValues.name}
-            imageUrl={intialValues.imageUrl}
+            name={project.name}
+            imageUrl={project.imageUrl}
             className="size-8 me-0"
           />
-          <p className="text-lg font-semibold">{intialValues.name}</p>
+          <p className="text-lg font-semibold">{project.name}</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" asChild>
             <Link
-              href={`/workspaces/${intialValues.workspaceId}/projects/${projectId}/settings`}
+              href={`/workspaces/${project.workspaceId}/projects/${projectId}/settings`}
             >
               <PencilIcon className="size-4 mr-2" />
               Edit Project
@@ -40,6 +49,7 @@ export function ProjectPageClient({ projectId }: { projectId: string }) {
           </Button>
         </div>
       </div>
+      <Analytics data={analytics} />
       <TaskViewSwitcher hideProjectFilter />
     </div>
   );

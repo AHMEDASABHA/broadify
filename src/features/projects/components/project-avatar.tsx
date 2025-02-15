@@ -21,12 +21,14 @@ export function ProjectAvatar({
   if (!imageUrl) {
     return (
       <Avatar
-        className={cn(`${avatarSize} rounded-md`, className)}
-        aria-label={`${name} project avatar`}
+        className={cn(
+          `${avatarSize} transition border p-2 bg-blue-600 rounded-full`,
+          className
+        )}
       >
         <AvatarFallback
           className={cn(
-            `${avatarSize} text-white bg-blue-600 font-semibold text-sm rounded-md`,
+            "text-white bg-primary font-medium flex justify-center items-center",
             fallbackClassName
           )}
         >

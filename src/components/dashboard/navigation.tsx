@@ -14,7 +14,7 @@ import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 export const sidebarItems = [
   {
     label: "Home",
-    href: "/home",
+    href: "/",
     icon: GoHome,
     activeIcon: GoHomeFill,
   },

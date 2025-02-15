@@ -13,6 +13,8 @@ interface FailureResponse {
 export type GetMembersResponse = SuccessResponse | FailureResponse;
 
 export type Member = Models.Document & {
+  userId: string;
+  workspaceId: string;
   name: string;
   email: string;
   role: MemberRole;
