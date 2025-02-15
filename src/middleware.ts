@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
-  if (user && isAuthPage) {
+  if (user && (isAuthPage || isOAuthPage)) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
