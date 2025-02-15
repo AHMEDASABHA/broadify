@@ -7,8 +7,9 @@ export async function middleware(request: NextRequest) {
   const isAuthPage =
     request.nextUrl.pathname === "/sign-in" ||
     request.nextUrl.pathname === "/sign-up";
+  const isOAuthPage = request.nextUrl.pathname === "/oauth";
 
-  if (!user && !isAuthPage) {
+  if (!user && !isAuthPage && !isOAuthPage) {
     return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
