@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
-import { useRouter } from "next/navigation";
 
 import { client } from "@/lib/rpc";
 import { toast } from "sonner";
@@ -13,7 +12,6 @@ type CreateWorkspaceRequest = InferRequestType<
 
 export const useCreateWorkspace = () => {
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const mutation = useMutation<
     CreateWorkspaceResponse,
@@ -34,7 +32,6 @@ export const useCreateWorkspace = () => {
     onSuccess: () => {
       toast.success("Workspace created successfully");
       queryClient.invalidateQueries({ queryKey: ["workspaces"] });
-      router.refresh();
     },
   });
 

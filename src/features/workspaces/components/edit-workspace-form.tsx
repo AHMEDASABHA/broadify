@@ -72,15 +72,10 @@ export function EditWorkspaceForm({
       ...data,
       image: data.image instanceof File ? data.image : "",
     };
-    updateWorkspace(
-      { form: finalData, param: { workspaceId: initialData.$id } },
-      {
-        onSuccess: ({ data }) => {
-          form.reset();
-          router.replace(`/workspaces/${data.$id}`);
-        },
-      }
-    );
+    updateWorkspace({
+      form: finalData,
+      param: { workspaceId: initialData.$id },
+    });
   }
 
   function handleImageChange(e: ChangeEvent<HTMLInputElement>) {
@@ -120,9 +115,7 @@ export function EditWorkspaceForm({
     resetInviteCode(
       { param: { workspaceId: initialData.$id } },
       {
-        onSuccess: () => {
-          
-        },
+        onSuccess: () => {},
       }
     );
   }

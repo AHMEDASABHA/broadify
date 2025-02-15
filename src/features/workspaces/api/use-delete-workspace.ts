@@ -14,7 +14,6 @@ type DeleteWorkspaceRequest = InferRequestType<
 
 export const useDeleteWorkspace = () => {
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const mutation = useMutation<
     DeleteWorkspaceResponse,
@@ -40,11 +39,8 @@ export const useDeleteWorkspace = () => {
       queryClient.invalidateQueries({
         queryKey: ["workspace", data.$id],
       });
-      //TODO: invalidate queries for projects, tasks, and files
-      // queryClient.invalidateQueries({ queryKey: ["projects"] });
-      // queryClient.invalidateQueries({ queryKey: ["tasks"] });
-      // queryClient.invalidateQueries({ queryKey: ["files"] });
-      router.refresh();
+      queryClient.invalidateQueries({ queryKey: ["projects"] });
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },
   });
 

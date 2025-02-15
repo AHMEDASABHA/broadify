@@ -9,6 +9,7 @@ import Logo from "@/assets/images/logo";
 import DottedSeparator from "../dotted-sperator";
 import Link from "next/link";
 import { WorkspacesSwitchers } from "./workspaces-switchers";
+import { Projects } from "./projects";
 export function AppSidebar() {
   return (
     <Sidebar>
@@ -22,6 +23,8 @@ export function AppSidebar() {
       <DottedSeparator />
       <SidebarContent>
         <Navigation />
+        <DottedSeparator />
+        <Projects />
       </SidebarContent>
       <SidebarFooter />
     </Sidebar>

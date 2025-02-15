@@ -1,26 +1,24 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
-import { useRouter } from "next/navigation";
 
 import { client } from "@/lib/rpc";
 import { toast } from "sonner";
-type CreateWorkspaceResponse = InferResponseType<
+type UpdateWorkspaceResponse = InferResponseType<
   (typeof client.api.workspaces)[":workspaceId"]["$patch"],
   //I want to get the response type of the successful updated workspace
   200
 >;
-type CreateWorkspaceRequest = InferRequestType<
+type UpdateWorkspaceRequest = InferRequestType<
   (typeof client.api.workspaces)[":workspaceId"]["$patch"]
 >;
 
 export const useUpdateWorkspace = () => {
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const mutation = useMutation<
-    CreateWorkspaceResponse,
+    UpdateWorkspaceResponse,
     Error,
-    CreateWorkspaceRequest
+    UpdateWorkspaceRequest
   >({
     mutationFn: async ({ form, param }) => {
       const response = await client.api.workspaces[":workspaceId"]["$patch"]({
@@ -42,7 +40,6 @@ export const useUpdateWorkspace = () => {
       queryClient.invalidateQueries({
         queryKey: ["workspace", data.$id],
       });
-      router.refresh();
     },
   });
 

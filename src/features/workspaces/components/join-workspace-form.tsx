@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import DottedSeparator from "@/components/dotted-sperator";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useJoinWorkspace } from "@/features/workspaces/api/use-join-workspace";
 import { useInviteCode } from "../hooks/use-invite-code";
 import { useWorkspaceId } from "../hooks/use-workspace-id";

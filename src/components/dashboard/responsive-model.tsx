@@ -6,7 +6,12 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTitle,
+  DrawerDescription,
+} from "@/components/ui/drawer";
 
 interface ResponsiveModelProps {
   children: React.ReactNode;
@@ -40,6 +45,10 @@ export function ResponsiveModel({
   } else {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
+        <VisuallyHidden>
+          <DrawerTitle>{title}</DrawerTitle>
+          <DrawerDescription>{description}</DrawerDescription>
+        </VisuallyHidden>
         <DrawerContent>
           <div className="overflow-y-auto hide-scrollbar max-h-[85vh]">
             {children}

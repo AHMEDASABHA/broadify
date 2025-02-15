@@ -14,7 +14,7 @@ export default function SoloPagesLayout({
       <div className="mx-auto max-w-screen-2xl p-4">
         <nav className="flex items-center justify-between h-20">
           <Link href="/">
-            <Image src={logo} alt="logo" width={152} height={152} />
+            <Image src={logo} alt="logo" width={180} height={182} />
           </Link>
           <UserButton />
         </nav>

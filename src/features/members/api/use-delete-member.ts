@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
-import { useRouter } from "next/navigation";
 
 import { client } from "@/lib/rpc";
 import { toast } from "sonner";
@@ -14,7 +13,6 @@ type DeleteMemberRequest = InferRequestType<
 
 export const useDeleteMember = () => {
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const mutation = useMutation<
     DeleteMemberResponse,
@@ -39,7 +37,6 @@ export const useDeleteMember = () => {
     onSuccess: () => {
       toast.success("Member deleted successfully");
       queryClient.invalidateQueries({ queryKey: ["members"] });
-      router.refresh();
     },
   });
 

@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
-import { useRouter } from "next/navigation";
 
 import { client } from "@/lib/rpc";
 import { toast } from "sonner";
@@ -14,7 +13,6 @@ type JoinWorkspaceRequest = InferRequestType<
 
 export const useJoinWorkspace = () => {
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const mutation = useMutation<
     JoinWorkspaceResponse,
@@ -43,7 +41,6 @@ export const useJoinWorkspace = () => {
       queryClient.invalidateQueries({
         queryKey: ["workspace", data.$id],
       });
-      router.refresh();
     },
   });
 

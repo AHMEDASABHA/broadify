@@ -22,6 +22,7 @@ export function WorkspacesSwitchers() {
   const { open } = useCreateWorkspaceModel();
   const handleWorkspaceChange = (id: string) => {
     router.push(`/workspaces/${id}`);
+    
   };
 
   return (
