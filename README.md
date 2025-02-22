@@ -1,8 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Broadify - Jira Clone 
 
-## Getting Started
+Broadify is a web application that allows you to manage your workspaces,projects and tasks.
+## Table of Contents
 
-First, run the development server:
+- [Broadify - Jira Clone](#broadify---jira-clone)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Environment Variables](#environment-variables)
+  - [Screens](#screens)
+    - [Screen 1: Home](#screen-1-home)
+    - [Screen 2: Dashboard](#screen-2-dashboard)
+    - [Screen 3: Settings](#screen-3-settings)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+## Installation
+
+To install the project, clone the repository and run the following commands:
 
 ```bash
 npm run dev
@@ -14,23 +29,46 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To start the development server, run:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm start
+```
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+The project requires the following environment variables to be set in a `.env.local` file:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `NEXT_PUBLIC_APPWRITE_DATABASE_ID`: Your Appwrite database ID.
+- `NEXT_PUBLIC_APPWRITE_WORKSPACES_ID`: Your Appwrite workspaces ID.
+- `NEXT_PUBLIC_APPWRITE_STORAGE_IMAGE_BUCKET_ID`: Your Appwrite storage image bucket ID.
+- `NEXT_PUBLIC_APPWRITE_MEMBERS_ID`: Your Appwrite members ID.
+- `NEXT_PUBLIC_APPWRITE_PROJECTS_ID`: Your Appwrite projects ID.
+- `NEXT_PUBLIC_APPWRITE_TASKS_ID`: Your Appwrite tasks ID.
+- `NEXT_PUBLIC_APPWRITE_ENDPOINT`: Your Appwrite endpoint.
+- `NEXT_PUBLIC_APPWRITE_PROJECT`: Your Appwrite project ID.
+- `NEXT_APPWRITE_KEY`: Your Appwrite API key.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Screens
 
-## Deploy on Vercel
+### Screen 1: Home
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The home screen provides an overview of the application and its features.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Screen 2: Dashboard
+
+The dashboard screen allows users to manage their tasks, projects, and workspaces.
+
+### Screen 3: Settings
+
+The settings screen allows users to configure their account and application preferences.
+
+## Contributing
+
+Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) for more information.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
